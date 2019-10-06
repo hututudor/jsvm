@@ -1,0 +1,6 @@
+mov 2 acc
+add 5
+div 2
+mov acc out
+sys
+end

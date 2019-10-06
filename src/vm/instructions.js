@@ -6,6 +6,9 @@ const SUB = 4;
 const MUL = 5;
 const DIV = 6;
 const SYS = 7;
+const FLR = 8;
+const CEL = 9;
+const CAL = 10;
 
 module.exports = {
   MOV,
@@ -15,5 +18,8 @@ module.exports = {
   SUB,
   MUL,
   DIV,
-  SYS
+  SYS,
+  FLR,
+  CEL,
+  CAL
 };

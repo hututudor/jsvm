@@ -103,6 +103,22 @@ class CPU {
         return;
       }
 
+      case instructions.FLR: {
+        this.setRegister('acc', Math.floor(this.getRegister('acc')));
+        return;
+      }
+
+      case instructions.CEL: {
+        this.setRegister('acc', Math.ceil(this.getRegister('acc')));
+        return;
+      }
+
+      case instructions.CAL: {
+        const value = this.fetch();
+        this.setRegister('ip', value);
+        return;
+      }
+
       case instructions.END: {
         this.running = false;
       }

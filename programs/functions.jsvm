@@ -1,0 +1,16 @@
+cal start
+
+start:
+  mov 1 acc
+  cal mul
+
+final:
+  mul 4
+  mov acc out
+  sys
+  end
+
+mul:
+  mul 2
+  cal final
+  end

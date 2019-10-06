@@ -1,0 +1,13 @@
+cal start
+
+start:
+  add 100
+  div 2
+  cal out
+
+out:
+  mov acc out
+  sys
+
+end:
+  end

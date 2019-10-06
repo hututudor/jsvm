@@ -1,0 +1,8 @@
+mov 'H' acc
+add 'ello'
+add '\s'
+add 'World'
+add '!'
+mov acc out
+sys
+end

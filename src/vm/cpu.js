@@ -15,7 +15,9 @@ class CPU {
       ip: 0,
       acc: 0,
       out: null,
-      in: null
+      in: null,
+      c1: 0,
+      c2: 0
     };
   }
 
@@ -182,6 +184,94 @@ class CPU {
         }
 
         this.setRegister('ip', pointer);
+        return;
+      }
+
+      case instructions.CMP: {
+        const reg1 = this.fetch();
+        const reg2 = this.fetch();
+
+        this.setRegister('c1', this.getValue(reg1));
+        this.setRegister('c2', this.getValue(reg2));
+
+        return;
+      }
+
+      case instructions.JGT: {
+        const value = this.fetch();
+        const pointer = this.fetch();
+
+        if (this.getRegister('c1') <= this.getRegister('c2')) {
+          return;
+        }
+
+        this.setRegister('ip', value);
+        this.callStack.push(pointer);
+        return;
+      }
+
+      case instructions.JLT: {
+        const value = this.fetch();
+        const pointer = this.fetch();
+
+        if (this.getRegister('c1') >= this.getRegister('c2')) {
+          return;
+        }
+
+        this.setRegister('ip', value);
+        this.callStack.push(pointer);
+        return;
+      }
+
+      case instructions.JLE: {
+        const value = this.fetch();
+        const pointer = this.fetch();
+
+        if (this.getRegister('c1') > this.getRegister('c2')) {
+          return;
+        }
+
+        this.setRegister('ip', value);
+        this.callStack.push(pointer);
+        return;
+      }
+
+      case instructions.JGE: {
+        const value = this.fetch();
+        const pointer = this.fetch();
+
+        if (this.getRegister('c1') < this.getRegister('c2')) {
+          return;
+        }
+
+        this.setRegister('ip', value);
+        this.callStack.push(pointer);
+        return;
+      }
+
+      case instructions.JEQ: {
+        const value = this.fetch();
+        const pointer = this.fetch();
+
+        if (this.getRegister('c1') !== this.getRegister('c2')) {
+          return;
+        }
+
+        this.setRegister('ip', value);
+        this.callStack.push(pointer);
+        return;
+      }
+
+      case instructions.JNE: {
+        const value = this.fetch();
+        const pointer = this.fetch();
+
+        if (this.getRegister('c1') === this.getRegister('c2')) {
+          return;
+        }
+
+        this.setRegister('ip', value);
+        this.callStack.push(pointer);
         return;
       }
 

@@ -1,0 +1,17 @@
+start:
+  cmp 1 1
+  jeq outcnd
+  cal out
+  end
+
+outcnd:
+  mov 3 out
+  sys
+  enf
+
+out:
+  mov c1 out
+  sys
+  mov c2 out
+  sys
+  enf

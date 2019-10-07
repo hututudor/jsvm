@@ -6,7 +6,7 @@ start:
 
   # square the number
   mov in acc
-  mul acc
+  mul acc acc
 
   # show the number
   mov acc out
@@ -15,4 +15,3 @@ start:
 
   # repeat
   cal start
-  enf

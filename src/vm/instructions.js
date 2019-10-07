@@ -11,6 +11,13 @@ const CEL = 'CEL';
 const CAL = 'CAL';
 const SLP = 'SLP';
 const ENF = 'ENF';
+const CMP = 'CMP';
+const JGT = 'JGT';
+const JLT = 'JLT';
+const JLE = 'JLE';
+const JGE = 'JGE';
+const JEQ = 'JEQ';
+const JNE = 'JNE';
 
 module.exports = {
   MOV,
@@ -25,5 +32,12 @@ module.exports = {
   CEL,
   CAL,
   SLP,
-  ENF
+  ENF,
+  CMP,
+  JGT,
+  JLT,
+  JLE,
+  JGE,
+  JEQ,
+  JNE
 };

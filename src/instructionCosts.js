@@ -13,5 +13,12 @@ module.exports = {
   [instr.CEL]: 1,
   [instr.CAL]: 3,
   [instr.SLP]: 2,
-  [instr.ENF]: 1
+  [instr.ENF]: 1,
+  [instr.CMP]: 3,
+  [instr.JGT]: 3,
+  [instr.JLT]: 3,
+  [instr.JLE]: 3,
+  [instr.JGE]: 3,
+  [instr.JEQ]: 3,
+  [instr.JNE]: 3,
 };

@@ -131,6 +131,85 @@ module.exports = name => {
         return;
       }
 
+      case 'cmp': {
+        mem.push(instructions.CMP);
+        mem.push(inst[1]);
+        mem.push(inst[2]);
+        return;
+      }
+
+      case 'jgt': {
+        mem.push(instructions.JGT);
+
+        if (typeof functions[inst[1]] === 'undefined') {
+          throw new Error(`Unknown function: ${inst[1]}`);
+        }
+
+        mem.push(functions[inst[1]]);
+        mem.push(index);
+        return;
+      }
+
+      case 'jlt': {
+        mem.push(instructions.JLT);
+
+        if (typeof functions[inst[1]] === 'undefined') {
+          throw new Error(`Unknown function: ${inst[1]}`);
+        }
+
+        mem.push(functions[inst[1]]);
+        mem.push(index);
+        return;
+      }
+
+      case 'jge': {
+        mem.push(instructions.JGE);
+
+        if (typeof functions[inst[1]] === 'undefined') {
+          throw new Error(`Unknown function: ${inst[1]}`);
+        }
+
+        mem.push(functions[inst[1]]);
+        mem.push(index);
+        return;
+      }
+
+      case 'JLE': {
+        mem.push(instructions.JLE);
+
+        if (typeof functions[inst[1]] === 'undefined') {
+          throw new Error(`Unknown function: ${inst[1]}`);
+        }
+
+        mem.push(functions[inst[1]]);
+        mem.push(index);
+        return;
+      }
+
+      case 'jeq': {
+        mem.push(instructions.JEQ);
+
+        if (typeof functions[inst[1]] === 'undefined') {
+          throw new Error(`Unknown function: ${inst[1]}`);
+        }
+
+        mem.push(functions[inst[1]]);
+        mem.push(index);
+        return;
+      }
+
+      case 'jne': {
+        mem.push(instructions.JNE);
+
+        if (typeof functions[inst[1]] === 'undefined') {
+          throw new Error(`Unknown function: ${inst[1]}`);
+        }
+
+        mem.push(functions[inst[1]]);
+        mem.push(index);
+        return;
+      }
+
       case 'end': {
         mem.push(instructions.END);
         return;

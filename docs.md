@@ -34,7 +34,7 @@ By default there are some registers but you can define more.
 - in -> the in register, referenced at the sys instruction
 - c1, c2 -> the compare registers used for conditional statements
 
-## Functions
+### Functions
 
 Functions are defined using the following syntax.
 
@@ -48,9 +48,37 @@ They can be referenced in jumps of CAL instructions.
 
 The end of a function must be signaled by an ENF instruction.
 
+### Values
+
+A register value can have 2 types: number or string.
+
+A string is determined by single or double quotes.
+
+```
+; number
+mov 0 acc
+
+; string
+mov 'abc' acc
+```
+
+### Comments
+
+They can start with ';' or '#'
+
+```
+; this is a valid comment
+# also a valid comment
+```
+
+### Special characters
+
+Since whitespace is used to determine the parameters of instructions, you cannot have any whitespace in strings.
+You can use \s to make a space or an \n to make a new line.
+
 ## Instructions
 
-A JSVM can have different instructions that define how the program will behave.
+A JSVM script can have different instructions that define how the program will behave.
 These instructions don't need to be uppercase or lowercase.
 
 ##### MOV

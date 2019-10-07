@@ -11,5 +11,7 @@ module.exports = {
   [instr.SYS]: 1,
   [instr.FLR]: 1,
   [instr.CEL]: 1,
-  [instr.CAL]: 2
+  [instr.CAL]: 3,
+  [instr.SLP]: 2,
+  [instr.ENF]: 1
 };

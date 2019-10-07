@@ -1,13 +1,15 @@
 cal start
+mov 1 acc
+cal out
+end
 
 start:
   add 100
   div 2
   cal out
+  enf
 
 out:
   mov acc out
   sys
-
-end:
-  end
+  enf

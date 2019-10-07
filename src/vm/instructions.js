@@ -9,6 +9,8 @@ const SYS = 'SYS';
 const FLR = 'FLR';
 const CEL = 'CEL';
 const CAL = 'CAL';
+const SLP = 'SLP';
+const ENF = 'ENF';
 
 module.exports = {
   MOV,
@@ -21,5 +23,7 @@ module.exports = {
   SYS,
   FLR,
   CEL,
-  CAL
+  CAL,
+  SLP,
+  ENF
 };

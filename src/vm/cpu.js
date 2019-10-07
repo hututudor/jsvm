@@ -7,6 +7,8 @@ class CPU {
 
     this.running = true;
 
+    this.callStack = [];
+
     this.registers = {
       ip: 0,
       acc: 0,
@@ -55,7 +57,7 @@ class CPU {
     return instruction;
   }
 
-  execute(instruction) {
+  async execute(instruction) {
     switch (instruction) {
       case instructions.MOV: {
         const value = this.fetch();
@@ -115,7 +117,26 @@ class CPU {
 
       case instructions.CAL: {
         const value = this.fetch();
+        const pointer = this.fetch();
         this.setRegister('ip', value);
+        this.callStack.push(pointer);
+        return;
+      }
+
+      case instructions.SLP: {
+        const value = this.fetch();
+        await this.sleep(this.getValue(value));
+        return;
+      }
+
+      case instructions.ENF: {
+        const pointer = this.callStack.pop();
+
+        if(typeof pointer === 'undefined') {
+          throw new Error('Call stack is empty')
+        }
+
+        this.setRegister('ip', pointer);
         return;
       }
 
@@ -138,18 +159,21 @@ class CPU {
     }
   }
 
-  step() {
+  async step() {
+    const instruction = this.fetch();
+
+    const e = await this.execute(instruction);
+
     if (process.env.DEBUG) {
       this.debug();
     }
 
-    const instruction = this.fetch();
-    return this.execute(instruction);
+    return e;
   }
 
   async clock() {
     while (this.running) {
-      this.step();
+      await this.step();
       await this.sleep(1000 / this.clockSpeed);
     }
   }

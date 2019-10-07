@@ -42,8 +42,14 @@ module.exports = name => {
 
   log(functions);
 
+  index = 0;
+
   text.forEach(instruction => {
     const inst = instruction.trim().split(' ');
+
+    if (instructionCosts[inst[0].trim().toUpperCase()]) {
+      index += instructionCosts[inst[0].trim().toUpperCase()];
+    }
 
     switch (inst[0].toLowerCase()) {
       case 'mov': {
@@ -106,6 +112,18 @@ module.exports = name => {
         }
 
         mem.push(functions[inst[1]]);
+        mem.push(index);
+        return;
+      }
+
+      case 'slp': {
+        mem.push(instructions.SLP);
+        mem.push(inst[1]);
+        return;
+      }
+
+      case 'enf': {
+        mem.push(instructions.ENF);
         return;
       }
 

@@ -1,8 +1,8 @@
 mov 'H' acc
-add 'ello'
-add '\s'
-add 'World'
-add '!'
+add 'ello' acc
+add '\s' acc
+add 'World' acc
+add '!' acc
 mov acc out
 sys
 end

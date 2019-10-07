@@ -1,6 +1,6 @@
 mov 2 acc
-add 5
-div 2
+add 5 acc
+div 2 acc
 mov acc out
 sys
 end

@@ -5,8 +5,8 @@ end
 
 start:
   mov 0 acc
-  add 100
-  div 2
+  add 100 acc
+  div 2 acc
   cal out
   enf
 

@@ -5,7 +5,7 @@ start:
   cal mul
 
 final:
-  mul 4
+  mul 4 acc
   mov acc out
   sys
   end

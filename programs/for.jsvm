@@ -1,0 +1,14 @@
+cal start
+end
+
+start:
+  cmp acc 10
+  jlt loop
+  enf
+
+loop:
+  add 1 acc
+  mov acc out
+  sys
+  cal start
+  enf

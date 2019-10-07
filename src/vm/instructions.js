@@ -18,6 +18,7 @@ const JLE = 'JLE';
 const JGE = 'JGE';
 const JEQ = 'JEQ';
 const JNE = 'JNE';
+const RND = 'RND';
 
 module.exports = {
   MOV,
@@ -39,5 +40,6 @@ module.exports = {
   JLE,
   JGE,
   JEQ,
-  JNE
+  JNE,
+  RND
 };

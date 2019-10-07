@@ -1,0 +1,51 @@
+var ran
+var gs
+var o
+
+cal start
+end
+
+start:
+  cal rand
+  cal check
+  enf
+
+check:
+  cal in
+  cmp in ran
+  jeq done
+  jgt greater
+  jlt lower
+  cal check
+  enf
+
+greater:
+  mov "Higher!" o
+  enf
+
+lower:
+  mov "Smaller!" o
+  enf
+
+done:
+  mov "Well\sdone!" o
+  cal out
+  end
+  enf
+
+in:
+  mov o out
+  mov 1 in
+  sys
+  enf
+
+out:
+  mov o out
+  sys
+  enf
+
+rand:
+  rnd ran
+  mul 100 ran
+  flr ran
+  enf

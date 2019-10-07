@@ -100,11 +100,13 @@ module.exports = name => {
 
       case 'flr': {
         mem.push(instructions.FLR);
+        mem.push(inst[1]);
         return;
       }
 
       case 'cel': {
         mem.push(instructions.CEL);
+        mem.push(inst[1]);
         return;
       }
 
@@ -207,6 +209,12 @@ module.exports = name => {
 
         mem.push(functions[inst[1]]);
         mem.push(index);
+        return;
+      }
+
+      case 'rnd': {
+        mem.push(instructions.RND);
+        mem.push(inst[1]);
         return;
       }
 

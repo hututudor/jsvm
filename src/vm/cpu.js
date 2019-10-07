@@ -153,12 +153,14 @@ class CPU {
       }
 
       case instructions.FLR: {
-        this.setRegister('acc', Math.floor(this.getRegister('acc')));
+        const register = this.fetch();
+        this.setRegister(register, Math.floor(this.getRegister(register)));
         return;
       }
 
       case instructions.CEL: {
-        this.setRegister('acc', Math.ceil(this.getRegister('acc')));
+        const register = this.fetch();
+        this.setRegister(register, Math.ceil(this.getRegister(register)));
         return;
       }
 
@@ -272,6 +274,13 @@ class CPU {
 
         this.setRegister('ip', value);
         this.callStack.push(pointer);
+        return;
+      }
+
+      case instructions.RND: {
+        const register = this.fetch();
+
+        this.setRegister(register, Math.random());
         return;
       }
 

@@ -9,8 +9,8 @@ module.exports = {
   [instr.MUL]: 3,
   [instr.DIV]: 3,
   [instr.SYS]: 1,
-  [instr.FLR]: 1,
-  [instr.CEL]: 1,
+  [instr.FLR]: 2,
+  [instr.CEL]: 2,
   [instr.CAL]: 3,
   [instr.SLP]: 2,
   [instr.ENF]: 1,
@@ -21,4 +21,5 @@ module.exports = {
   [instr.JGE]: 3,
   [instr.JEQ]: 3,
   [instr.JNE]: 3,
+  [instr.RND]: 2,
 };

@@ -4,6 +4,7 @@ cal out
 end
 
 start:
+  mov 0 acc
   add 100
   div 2
   cal out

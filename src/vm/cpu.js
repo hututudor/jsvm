@@ -1,3 +1,5 @@
+const rl = require('readline-sync');
+
 const instructions = require('./instructions');
 
 class CPU {
@@ -12,7 +14,8 @@ class CPU {
     this.registers = {
       ip: 0,
       acc: 0,
-      out: null
+      out: null,
+      in: null
     };
   }
 
@@ -100,7 +103,32 @@ class CPU {
 
       case instructions.SYS: {
         const out = this.getRegister('out');
-        console.log(out);
+        const inr = this.getRegister('in');
+
+        if (out) {
+          console.log(out);
+        }
+
+        if (inr === 1) {
+          const res = await rl.questionInt();
+          this.setRegister('in', res);
+        }
+
+        if (inr === 2) {
+          const res = await rl.questionFloat();
+          this.setRegister('in', res);
+        }
+
+        if (inr === 3) {
+          const res = await rl.question();
+          this.setRegister('in', res);
+        }
+
+        if (inr === 4) {
+          const res = await rl.question('', { hideEchoBack: true });
+          this.setRegister('in', res);
+        }
+
         this.setRegister('out', null);
         return;
       }
@@ -132,8 +160,8 @@ class CPU {
       case instructions.ENF: {
         const pointer = this.callStack.pop();
 
-        if(typeof pointer === 'undefined') {
-          throw new Error('Call stack is empty')
+        if (typeof pointer === 'undefined') {
+          throw new Error('Call stack is empty');
         }
 
         this.setRegister('ip', pointer);

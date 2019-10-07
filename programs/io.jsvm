@@ -1,0 +1,18 @@
+start:
+  # read a number
+  mov 1 in
+  mov "What\sis\sthe\snumber?" out
+  sys
+
+  # square the number
+  mov in acc
+  mul acc
+
+  # show the number
+  mov acc out
+  mov 0 in
+  sys
+
+  # repeat
+  cal start
+  enf

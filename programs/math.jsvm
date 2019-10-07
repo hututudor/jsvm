@@ -1,0 +1,17 @@
+start:
+  var r1
+  add 3 r1
+  add 4 r1
+  mul 4 r1
+  div 2 r1
+  sub 2 r1
+  cal out
+  cal out
+  cal out
+  cal out
+  end
+
+out:
+  mov r1 out
+  sys
+  enf

@@ -68,24 +68,28 @@ module.exports = name => {
       case 'add': {
         mem.push(instructions.ADD);
         mem.push(inst[1]);
+        mem.push(inst[2]);
         return;
       }
 
       case 'sub': {
         mem.push(instructions.SUB);
         mem.push(inst[1]);
+        mem.push(inst[2]);
         return;
       }
 
       case 'mul': {
         mem.push(instructions.MUL);
         mem.push(inst[1]);
+        mem.push(inst[2]);
         return;
       }
 
       case 'div': {
         mem.push(instructions.DIV);
         mem.push(inst[1]);
+        mem.push(inst[2]);
         return;
       }
 

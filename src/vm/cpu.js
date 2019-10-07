@@ -79,25 +79,42 @@ class CPU {
 
       case instructions.ADD: {
         const value = this.fetch();
-        this.setRegister('acc', this.getRegister('acc') + this.getValue(value));
+        const register = this.fetch();
+        this.setRegister(
+          register,
+          this.getRegister(register) + this.getValue(value)
+        );
         return;
       }
 
       case instructions.SUB: {
         const value = this.fetch();
-        this.setRegister('acc', this.getRegister('acc') - this.getValue(value));
+        const register = this.fetch();
+        this.setRegister(
+          register,
+          this.getRegister(register) - this.getValue(value)
+        );
         return;
       }
 
       case instructions.MUL: {
         const value = this.fetch();
-        this.setRegister('acc', this.getRegister('acc') * this.getValue(value));
+        const register = this.fetch();
+        this.setRegister(
+          register,
+          this.getRegister(register) * this.getValue(value)
+        );
         return;
       }
 
       case instructions.DIV: {
         const value = this.fetch();
-        this.setRegister('acc', this.getRegister('acc') / this.getValue(value));
+        const register = this.fetch();
+
+        this.setRegister(
+          register,
+          this.getRegister(register) / this.getValue(value)
+        );
         return;
       }
 

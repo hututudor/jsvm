@@ -1,14 +1,14 @@
-const MOV = 0;
-const END = 1;
-const VAR = 2;
-const ADD = 3;
-const SUB = 4;
-const MUL = 5;
-const DIV = 6;
-const SYS = 7;
-const FLR = 8;
-const CEL = 9;
-const CAL = 10;
+const MOV = 'MOV';
+const END = 'END';
+const VAR = 'VAR';
+const ADD = 'ADD';
+const SUB = 'SUB';
+const MUL = 'MUL';
+const DIV = 'DIV';
+const SYS = 'SYS';
+const FLR = 'FLR';
+const CEL = 'CEL';
+const CAL = 'CAL';
 
 module.exports = {
   MOV,

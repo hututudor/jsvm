@@ -1,6 +1,9 @@
 const fs = require('fs');
 const log = require('./log');
 
+const instructions = require('./vm/instructions');
+const instructionCosts = require('./instructionCosts');
+
 module.exports = name => {
   const mem = [];
   const text = fs
@@ -11,6 +14,8 @@ module.exports = name => {
   let index = 0;
 
   let functions = {};
+
+  log(instructionCosts);
 
   text.forEach(instruction => {
     const inst = instruction.trim().split(' ');
@@ -30,63 +35,8 @@ module.exports = name => {
       return;
     }
 
-    switch (inst[0]) {
-      case 'mov': {
-        index += 3;
-        return;
-      }
-
-      case 'var': {
-        index += 2;
-        return;
-      }
-
-      case 'add': {
-        index += 2;
-        return;
-      }
-
-      case 'sub': {
-        index += 2;
-        return;
-      }
-
-      case 'mul': {
-        index += 2;
-
-        return;
-      }
-
-      case 'div': {
-        index += 2;
-
-        return;
-      }
-
-      case 'sys': {
-        index += 1;
-        return;
-      }
-
-      case 'flr': {
-        index += 1;
-        return;
-      }
-
-      case 'cel': {
-        index += 1;
-        return;
-      }
-
-      case 'end': {
-        index += 1;
-        return;
-      }
-
-      case 'cal': {
-        index += 2;
-        return;
-      }
+    if (instructionCosts[inst[0].trim().toUpperCase()]) {
+      index += instructionCosts[inst[0].trim().toUpperCase()];
     }
   });
 
@@ -97,59 +47,59 @@ module.exports = name => {
 
     switch (inst[0].toLowerCase()) {
       case 'mov': {
-        mem.push(0);
+        mem.push(instructions.MOV);
         mem.push(inst[1]);
         mem.push(inst[2]);
         return;
       }
 
       case 'var': {
-        mem.push(2);
+        mem.push(instructions.VAR);
         mem.push(inst[1]);
         return;
       }
 
       case 'add': {
-        mem.push(3);
+        mem.push(instructions.ADD);
         mem.push(inst[1]);
         return;
       }
 
       case 'sub': {
-        mem.push(4);
+        mem.push(instructions.SUB);
         mem.push(inst[1]);
         return;
       }
 
       case 'mul': {
-        mem.push(5);
+        mem.push(instructions.MUL);
         mem.push(inst[1]);
         return;
       }
 
       case 'div': {
-        mem.push(6);
+        mem.push(instructions.DIV);
         mem.push(inst[1]);
         return;
       }
 
       case 'sys': {
-        mem.push(7);
+        mem.push(instructions.SYS);
         return;
       }
 
       case 'flr': {
-        mem.push(8);
+        mem.push(instructions.FLR);
         return;
       }
 
       case 'cel': {
-        mem.push(9);
+        mem.push(instructions.CEL);
         return;
       }
 
       case 'cal': {
-        mem.push(10);
+        mem.push(instructions.CAL);
 
         if (typeof functions[inst[1]] === 'undefined') {
           throw new Error(`Unknown function: ${inst[1]}`);
@@ -160,7 +110,7 @@ module.exports = name => {
       }
 
       case 'end': {
-        mem.push(1);
+        mem.push(instructions.END);
         return;
       }
     }

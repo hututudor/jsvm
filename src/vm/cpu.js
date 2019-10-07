@@ -139,7 +139,9 @@ class CPU {
   }
 
   step() {
-    // this.debug();
+    if (process.env.DEBUG) {
+      this.debug();
+    }
 
     const instruction = this.fetch();
     return this.execute(instruction);
